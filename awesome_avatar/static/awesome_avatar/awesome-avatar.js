@@ -85,6 +85,7 @@ var j = jQuery.noConflict();
     //            handles: true,
                 aspectRatio: config.width + ":" + config.height,
                 fadeSpeed: 100,
+                resizable: false,
     //            minHeight: 50,
     //            minWidth: 50,
                 x1: sel.x1,
@@ -95,7 +96,7 @@ var j = jQuery.noConflict();
             });
 
             update_coors(selector, config, {'width': img_width}, sel);
-        })();
+        });
     }
 
     function update_coors(selector, config, img, selection) {
