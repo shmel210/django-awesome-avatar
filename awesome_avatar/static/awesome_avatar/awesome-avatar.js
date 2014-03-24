@@ -7,9 +7,9 @@ var j = jQuery.noConflict();
             }
 
             // if selection, remove
-            var jlast_img = j(selector + '-select-area img');
-            if (jlast_img.length) {
-                var img_obj = jlast_img.imgAreaSelect({instance: true});
+            var $last_img = j(selector + '-select-area img');
+            if ($last_img.length) {
+                var img_obj = $last_img.imgAreaSelect({instance: true});
                 img_obj.remove();
             }
 
@@ -18,8 +18,8 @@ var j = jQuery.noConflict();
     //        j(selector + '-preview').empty();
             j(selector + '-preview img').hide();
 
-            var p = new RegExp(/\.(jpg|jpeg|png|gif)j/);
-            var fileanme = j(this).val().toLowerCase().replace(/^\s+|\s+j/g, '');
+            var p = new RegExp(/\.(jpg|jpeg|png|gif)$/);
+            var fileanme = j(this).val().toLowerCase().replace(/^\s+|\s+$/g, '');
             if(!p.test(fileanme)){
                 alert('{% trans "Неверный формат. Выберите изображение" %}');
                 return ;
@@ -37,15 +37,15 @@ var j = jQuery.noConflict();
 
     function bind_preview(selector, config, e) {
         var image_data = e.target.result;
-    //    j(selector + '-preview').empty();
-    //    j(selector + '-preview').append('<img />');
+    //    $(selector + '-preview').empty();
+    //    $(selector + '-preview').append('<img />');
         j(selector + '-preview img').show();
         j(selector + '-preview img').css('max-width', 'none');
         j(selector + '-preview img').attr('src', image_data);
 
         j(selector + '-select-area').empty();
         j(selector + '-select-area').append('<img />');
-    //    j(selector + '-select-area img').show();
+    //    $(selector + '-select-area img').show();
         j(selector + '-select-area img').attr('src', image_data).load(function(){
             j(this).unbind('load');
 
